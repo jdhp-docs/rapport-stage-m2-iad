@@ -1,0 +1,51 @@
+\begin{tikzpicture}[scale=1, auto, >=stealth']
+    \small
+
+    \tikzstyle{blk} = [rectangle, rounded corners, draw=black, very thick, text width=3.7cm, minimum height=2cm, text centered]
+    \tikzstyle{lab} = [rectangle]
+    \tikzstyle{connector} = [->,thick]
+    \tikzstyle{line} = [thick]
+
+    % Node placement with matrix library (3x2 array) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \matrix[ampersand replacement=\&, row sep=0.3cm, column sep=1cm] {
+
+      % row 1
+      \node[blk] (boxA1) {Optimisation de la cinématique dans l'espace de la tâche}; \&
+      \node[blk] (boxA2) {Optimisation de la dynamique et des activations dans l'espace articulaire};
+      \\
+
+      % row 2
+      \node[blk] (boxB1) {Optimisation de la dynamique dans l'espace de la tâche}; \&
+      \node[blk] (boxB2) {Optimisation des activations dans l'espace articulaire}; 
+      \\
+
+      % row 3
+      \node[blk] (boxC1) {Optimisation de la dynamique dans l'espace articulaire};\&
+      \node[blk] (boxC2) {Optimisation des activations dans l'espace articulaire};
+      \\
+    };
+
+     \node [lab, right of=boxA2, node distance=3.7cm] (lA) {(a)};
+     \node [lab, right of=boxB2, node distance=3.7cm] (lB) {(b)};
+     \node [lab, right of=boxC2, node distance=3.7cm] (lC) {(c)};
+
+     % Now link the nodes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     \draw [connector] (boxA1) -- (boxA2) node[midway] {$\dq^*$};
+     \draw [connector] (boxB1) -- (boxB2) node[midway] {$\octrl^*$};
+     \draw [connector] (boxC1) -- (boxC2) node[midway] {$\vt^*$};
+
+     \draw [line]      ($(boxA1.west) + (0mm,  5mm)$) -- ($(boxA1.west) + (-5mm,  5mm)$) node[left] {$\ostate$};
+     \draw [line]      ($(boxA1.west) + (0mm, -5mm)$) -- ($(boxA1.west) + (-5mm, -5mm)$) node[left] {$\ostate^*$};
+     \draw [connector] ($(boxA2.east) + (0mm,  0mm)$) -- ($(boxA2.east) + ( 5mm,  0mm)$) node[right] {$\jctrl^*$};
+     
+     \draw [line]      ($(boxB1.west) + (0mm,  5mm)$) -- ($(boxB1.west) + (-5mm,  5mm)$) node[left] {$\ostate$};
+     \draw [line]      ($(boxB1.west) + (0mm, -5mm)$) -- ($(boxB1.west) + (-5mm, -5mm)$) node[left] {$\ostate^*$};
+     \draw [connector] ($(boxB2.east) + (0mm,  0mm)$) -- ($(boxB2.east) + ( 5mm,  0mm)$) node[right] {$\jctrl^*$};
+
+     \draw [line]      ($(boxC1.west) + (0mm,  5mm)$) -- ($(boxC1.west) + (-5mm,  5mm)$) node[left] {$\jstate$};
+     \draw [line]      ($(boxC1.west) + (0mm, -5mm)$) -- ($(boxC1.west) + (-5mm, -5mm)$) node[left] {$\jstate^*$};
+     \draw [connector] ($(boxC2.east) + (0mm,  0mm)$) -- ($(boxC2.east) + ( 5mm,  0mm)$) node[right] {$\jctrl^*$};
+
+
+\end{tikzpicture}
+

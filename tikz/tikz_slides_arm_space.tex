@@ -1,0 +1,123 @@
+% Note. This illustration was originally made with PSTricks. Conversion to
+% PGF/TikZ was straightforward. However, I could probably have made it more
+% elegant.
+
+\tikzstyle{blk} = [rectangle, rounded corners, draw=white, very thick, text width=3cm, minimum height=1cm, text centered]
+
+% Define a variable as a length
+% Input:
+%   #1 Variable name
+%   #2 Value
+%
+% Example:
+%   \nvar{\varx}{2cm}
+\newcommand{\nvar}[2]{%
+    \newlength{#1}
+    \setlength{#1}{#2}
+}
+
+% Define a few constants for drawing
+\nvar{\dg}{0.3cm}
+\def\dw{0.25}\def\dh{0.5}
+\nvar{\nddx}{0.5cm}
+
+% Define commands for links, joints and such
+\def\link{\draw [double distance=1.5mm, very thick] (0,0)--}
+
+\def\joint{%
+    \filldraw [fill=white] (0,0) circle (5pt);
+    \fill[black] circle (2pt);
+}
+
+\def\grip{%
+    \node (G) {};
+    \draw[ultra thick](0cm,\dg)--(0cm,-\dg);
+    \fill (0cm, 0.5\dg)+(0cm,1.5pt) -- +(0.6\dg,0cm) -- +(0pt,-1.5pt);
+    \fill (0cm, -0.5\dg)+(0cm,1.5pt) -- +(0.6\dg,0cm) -- +(0pt,-1.5pt);
+}
+
+\def\robotbase{%
+    \node (B) {};
+    \draw[rounded corners=8pt] (-\dw,-\dh)-- (-\dw, 0) --
+        (0,\dh)--(\dw,0)--(\dw,-\dh);
+    \draw (-0.5,-\dh)-- (0.5,-\dh);
+    \fill[pattern=north east lines] (-0.5,-1) rectangle (0.5,-\dh);
+}
+
+% Draw an angle annotation
+% Input:
+%   #1 Angle
+%   #2 Label
+% Example:
+%   \angann{30}{$\theta_1$}
+\newcommand{\angann}[2]{%
+    \begin{scope}[red]
+    \draw [dashed, red] (0,0) -- (1.2\nddx,0pt);
+    \draw [->, shorten >=3.5pt] (\nddx,0pt) arc (0:#1:\nddx);
+    % Unfortunately automatic node placement on an arc is not supported yet.
+    % We therefore have to compute an appropriate coordinate ourselves.
+    \node at (#1/2-2:\nddx+8pt) {#2};
+    \end{scope}
+}
+
+% Define the kinematic parameters of the three link manipulator.
+\def\thetaone{60}
+\def\Lone{2}
+\def\thetatwo{-110}
+\def\Ltwo{2}
+\def\thetathree{90}
+\def\Lthree{1}
+
+\begin{tikzpicture}
+    \small
+
+    \robotbase
+    \angann{\thetaone}{$q_1$}
+    \link(\thetaone:\Lone);
+    \joint
+    \begin{scope}[shift=(\thetaone:\Lone), rotate=\thetaone]
+        \angann{\thetatwo}{$q_2$}
+        \link(\thetatwo:\Ltwo);
+        \joint
+        \begin{scope}[shift=(\thetatwo:\Ltwo), rotate=\thetatwo]
+            \angann{\thetathree}{$q_3$}
+            %\lineann[0.7]{\thetathree}{\Lthree}{$L_3$}
+            \draw [dashed, red,rotate=\thetathree] (0,0) -- (1.2\nddx,0pt);
+            \link(\thetathree:\Lthree);
+            \joint
+            \begin{scope}[shift=(\thetathree:\Lthree), rotate=\thetathree]
+                \grip
+            \end{scope}
+        \end{scope}
+    \end{scope}
+        
+    \node at (1, -1.5) [blk] {Espace articulaire $\q=(q_1~q_2~q_3)^T$};
+
+    \begin{scope}[xshift=5.5cm]
+        \robotbase
+        \link(\thetaone:\Lone);
+        \joint
+        \begin{scope}[shift=(\thetaone:\Lone), rotate=\thetaone]
+            \link(\thetatwo:\Ltwo);
+            \joint
+            \begin{scope}[shift=(\thetatwo:\Ltwo), rotate=\thetatwo]
+                \draw [dashed, red, rotate=\thetathree] (0,0) -- (1.2\nddx,0pt);
+                \link(\thetathree:\Lthree);
+                \joint
+                \begin{scope}[shift=(\thetathree:\Lthree), rotate=\thetathree]
+                    \grip
+                \end{scope}
+            \end{scope}
+        \end{scope}
+
+        \draw [dashed, red] ($(G) + (0mm,  0mm)$) -- ($(G) + (0cm,  -1.6cm)$) node[below] {$x_1$};
+        \draw [dashed, red] ($(G) + (0mm,  0mm)$) -- ($(G) + (-4cm,  0cm)$) node[left] {$x_2$};
+
+        % quick & dirty
+        %\draw [dashed] ($(B) + (0mm,  -2cm)$) -- ($(G) + (0cm,  -2.5cm)$) node[midway] {$\x$};
+
+        \node at (1, -1.5) [blk] {Espace de la tâche $\x=(x_1~x_2)^T$};
+    \end{scope}
+
+\end{tikzpicture}
+

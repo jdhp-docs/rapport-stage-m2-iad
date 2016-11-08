@@ -1,0 +1,46 @@
+% Copyright (c) 2011 Jérémie DECOCK (http://www.jdhp.org)
+
+\documentclass[pdftex,a4paper,11pt]{article} 
+\usepackage[utf8]{inputenc}
+\usepackage[frenchb]{babel}
+\usepackage[pdftex]{graphicx}
+\usepackage{hyperref}
+
+\hypersetup{
+	pdftoolbar=true,                    % show Acrobat’s toolbar ?
+	pdfmenubar=true,                    % show Acrobat’s menu ?
+	pdffitwindow=true,                  % page fit to window when opened
+	pdftitle={QOPS},                    % title
+	pdfauthor={Jérémie DECOCK},         % author
+	pdfsubject={QOPS},                  % subject of the document
+	pdfnewwindow=true,                  % links in new window
+	pdfkeywords={QOPS},                 % list of keywords
+	colorlinks=true,                    % false: boxed links; true: colored links
+	linkcolor=black,                    % color of internal links
+	citecolor=black,                    % color of links to bibliography
+	filecolor=black,                    % color of file links
+	urlcolor=black                      % color of external links
+}
+
+\begin{document}
+
+\title{QOPS}
+\author{
+	Jérémie \bsc{Decock}
+}
+\date{\today{}}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section*{Références}
+
+% Insert full bib here with vim : r!sh makebib.sh
+%\cite{katayama1993}
+%\cite{bishop2001introduction}
+
+\bibliographystyle{plain}
+\bibliography{article}
+
+\end{document}

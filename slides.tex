@@ -1,0 +1,95 @@
+% Copyright (c) 2011 Jérémie DECOCK (http://www.jdhp.org)
+
+\documentclass{beamer}
+
+\input{slides_packages.tex}
+
+\input{commands.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetheme[compress]{Dresden}
+
+\title{Optimisation du contrôle moteur}
+\subtitle{Vers un modèle structuré}
+
+% \author[⟨short author names⟩]{⟨author names⟩}
+% The names should be separated using the command \and.
+\author[Decock]{Jérémie~\bsc{Decock}\\\medskip{\small {\em Superviseur~:} Olivier~\bsc{Sigaud}}}
+
+\institute{UPMC ~~~ ISIR}
+\date{07 septembre 2011}
+
+% \subject{⟨text⟩}
+% Enters the ⟨text⟩ as the subject text in the pdf document info.
+% It currently has no other effect.
+\subject{contrôle moteur}
+
+% \keywords{⟨text⟩}
+% Enters the ⟨text⟩ as keywords in the pdf document info.
+% It currently has no other effect. 
+\keywords{contrôle moteur, robotique}
+
+\AtBeginSection[] {
+    \begin{frame}
+    \begin{center}
+        {\LARGE \insertsectionhead}
+    \end{center}
+    \end{frame}
+}
+
+%\AtBeginSection[] {
+%    %\begin{frame}<beamer>{Plan}
+%    \begin{frame}<beamer>
+%        \tableofcontents[currentsection]
+%    \end{frame}
+%}
+
+%\AtBeginSection[] {
+%    %\begin{frame}<beamer>{Plan}
+%    \begin{frame}<beamer>
+%        \tableofcontents[currentsection,currentsubsection]
+%    \end{frame}
+%}
+%
+%\AtBeginSubsection[] {
+%    %\begin{frame}<beamer>{Plan}
+%    \begin{frame}<beamer>
+%        \tableofcontents[currentsection,currentsubsection]
+%    \end{frame}
+%}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Défini le logo
+\logo{\includegraphics[height=0.5cm]{fig/logo_upmc}}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+% Redéfini le logo : pour tous les slides suivants
+% logo est remplacé par le numéro de page
+\setbeamercolor*{logo}{fg=black}
+\logo{\insertframenumber}
+%\logo{\insertframenumber/\inserttotalframenumber}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{slides_section1.tex}
+
+\begin{frame}{Plan}
+    \tableofcontents
+\end{frame}
+
+\input{slides_section2and3.tex}
+
+\input{slides_section4and5.tex}
+
+\input{slides_section6.tex}
+
+\input{slides_appendix.tex}
+
+\end{document}

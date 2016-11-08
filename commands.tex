@@ -1,0 +1,135 @@
+%\renewcommand{\vec}[1]{\ensuremath{\boldsymbol{#1}}} % bold vectors
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Pour désactiver temporairement les images (compile beaucoup plus vite)
+%\renewcommand{\includegraphics}[2][]{\null}
+
+% Symboles mathématiques
+
+\def\bbbr{{\rm I\!R}} %reelle Zahlen
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{{\bbbr}{}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\mfrac}[1]{\mathfrak{#1}}
+
+\newcommand{\ch}    {\mathop{\mathrm{ch}}\nolimits}
+\newcommand{\sh}    {\mathop{\mathrm{sh}}\nolimits}
+
+%%% Commandes générales
+
+\newcommand{\vs}[1]{\boldsymbol{#1}} % vector symbol (\boldsymbol, \textbf or \vec)
+\newcommand{\ms}[1]{\boldsymbol{#1}} % matrix symbol (\boldsymbol, \textbf)
+
+\newcommand{\scut}{\text{sc}}        % shortcut symbol
+
+\newcommand{\ostate}{\vs{\chi}}        % state in operational space
+\newcommand{\dostate}{\vs{\dot{\chi}}} % derivative of the state in operational space
+\newcommand{\x}{\vs{x}}                % cartesian position vector
+\newcommand{\xx}{x_1}                  % x
+\newcommand{\xy}{x_2}                  % y
+\newcommand{\dx}{\vs{\dot{x}}}
+\newcommand{\dxx}{\dot{x}_1}
+\newcommand{\dxy}{\dot{x}_2}
+\newcommand{\ddx}{\vs{\ddot{x}}}
+\newcommand{\ddxx}{\ddot{x}_1}
+\newcommand{\ddxy}{\ddot{x}_2}
+
+\newcommand{\jstate}{\vs{\xi}}         % state in joint space
+\newcommand{\djstate}{\vs{\dot{\xi}}}  % derivative of the state in joint space
+\newcommand{\q}{\vs{q}}                % joint vector
+\newcommand{\qs}{q_1}                  % shoulder angle
+\newcommand{\qe}{q_2}                  % elbow angle
+\newcommand{\cosqs}{\cos(\qs)}
+\newcommand{\cosqe}{\cos(\qe)}
+\newcommand{\cosqsqe}{\cos(\qs + \qe)}
+\newcommand{\sinqs}{\sin(\qs)}
+\newcommand{\sinqe}{\sin(\qe)}
+\newcommand{\sinqsqe}{\sin(\qs + \qe)}
+\newcommand{\dq}{\vs{\dot{q}}}
+\newcommand{\dqs}{\dot{q}_1}
+\newcommand{\dqe}{\dot{q}_2}
+\newcommand{\ddq}{\vs{\ddot{q}}}
+\newcommand{\ddqs}{\ddot{q}_1}
+\newcommand{\ddqe}{\ddot{q}_2}
+
+\newcommand{\mstate}{\mathcal{U}}         % state in joint space
+
+\newcommand{\rewardfactor}{\rho}       % reward factor
+\newcommand{\costfactor}{\epsilon}     % cost factor
+\newcommand{\discountfactor}{\gamma}   % discount factor
+\newcommand{\discountfunction}{\Gamma}   % discount factor
+
+\newcommand{\costfuntion}{\mathcal{C}}
+\newcommand{\costfuntionhat}{\hat{\mathcal{C}}}
+
+\newcommand{\fk}{\vs{\mathcal{FK}}}
+\newcommand{\processfuntion}{\vs{\mathcal{PF}}}
+
+\newcommand{\octrl}{\vs{\phi}}  % control in operational space
+\newcommand{\jctrl}{\vs{u}}  % control in joint space
+
+\newcommand{\dcm}{a}            % distance séparant le centre ... au centre de masse de ...
+\newcommand{\dcmu}{a_1}         % distance séparant le centre de l'épaule au centre de masse du bras
+\newcommand{\dcmf}{a_2}         % distance séparant le centre du coude au centre de masse de l'avant bras
+
+\newcommand{\vt}{\vs{\tau}}          % torque vector
+\newcommand{\ts}{\tau_1}             % shoulder torque
+\newcommand{\te}{\tau_2}             % elbow torque
+
+\newcommand{\len}{l}                 % arm length
+\newcommand{\lu}{l_1}                % upper arm length
+\newcommand{\lf}{l_2}                % forearm length
+
+\newcommand{\m}{m}                   % mass
+\newcommand{\msu}{m_1}               % forearm mass
+\newcommand{\mf}{m_2}                % forearm mass
+
+\newcommand{\si}{\iota}             % moment of inertia scalar
+\newcommand{\is}{\iota_1}           % shoulder moment of inertia
+\newcommand{\ie}{\iota_2}           % elbow moment of inertia
+
+\newcommand{\invM}[1]{M^{-1}_{#1}}  % inverse de la matrice d'inertie
+\newcommand{\detM}{\det(\ms{M})}
+
+\newcommand{\deriv}[2]{\frac{d {#1}}{d {#2}}}  % derivative
+\newcommand{\pd}[2]{\frac{\partial {#1}}{\partial {#2}}}  % partial derivative
+
+\newcommand{\jacobian}{\ms{J}}             % jacobienne (matrice)
+\newcommand{\djacobian}{\ms{\dot{J}}}
+\newcommand{\ddjacobian}{\ms{\ddot{J}}}
+
+\newcommand{\motornoise}{w}
+\newcommand{\vmotornoise}{\vs{w}}
+
+\newcommand{\perceptionnoise}{\nu}
+\newcommand{\vperceptionnoise}{\vs{\nu}}
+
+\newcommand{\then}{\Rightarrow}
+\newcommand{\alias}{\triangleq}
+%\newcommand{\argmin}{\operatornamewithlimits{argmin}}
+
+%\newcommand{\reels}{\mathbb{R}}
+%\newcommand{\equiv}{\Leftrightarrow}
+%\renewcommand{\det}[1]{\det({#1})}
+%\numberwithin{equation}{subsection}
+%\setlength\arraycolsep{5.4pt}
+%\setlength\arrayrulewidth{15.4pt}
+%\renewcommand\arraystretch{1.5}
+
+\newenvironment{jmatrix}{\renewcommand\arraystretch{1.5} \begin{pmatrix}}{\end{pmatrix}}
+
+\newcommand{\todo}[1][\dots]{\textbf{[TODO : #1]}}  % todo mark
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+\newcommand{\dontforget}[1]{\textcolor{red}{#1}}
+\newcommand{\qopsx}{\text{QOPS}_\phi}
+\newcommand{\qopslqp}{\text{QOPS}_\phi\text{+LQP}}
+

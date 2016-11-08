@@ -1,0 +1,54 @@
+\begin{tikzpicture}[scale=1, auto, >=stealth']
+    \small
+
+    % TikZ styles for drawing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \tikzstyle{block} = [draw,rectangle,thick,minimum height=2em,minimum width=2em]
+    \tikzstyle{rounded} = [draw,rectangle,rounded corners=2mm,thick,minimum height=2em,minimum width=2em]
+    \tikzstyle{sum} = [draw,circle,inner sep=0mm,minimum size=2mm]
+    \tikzstyle{connector} = [->,thick]
+    \tikzstyle{line} = [thick]
+    \tikzstyle{branch} = [circle,inner sep=0pt,minimum size=1mm,fill=black,draw=black]
+
+    % Node placement with matrix library (3x5 array) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \matrix[ampersand replacement=\&, row sep=0.2cm, column sep=0.5cm] {
+
+      % row 1
+      \node[branch, yshift=-2mm] (b2) {}; \&
+      \node[block] (control) {Contrôleur}; \&
+      \node[rounded] (noise) {Bruit}; \&
+      \node[branch] (b3) {}; \&
+      \node[block] (model) {Système mécanique (bras)};
+      \\
+
+      % row 2
+      \&
+      \node[sum] (kalman) {K}; \&
+      \&
+      \&
+      \\
+
+      % row 3
+      \&
+      \&
+      \node[rounded] (delta) {Délai}; \&
+      \&
+      \node[branch] (b4) {};
+      \\
+    };
+
+     % Now link the nodes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     \draw [line]      ($(control.west) + (-1cm, 2mm)$) -- ($(control.west) + (-1cm, 2mm)$) node[left] {$\jstate^*$};
+     \draw [line]      (b2) -- ($(control.west) + (-1cm, -2mm)$) node[left] {$\jstate_0$};
+     \draw [connector] ($(control.west) + (-1cm, 2mm)$) -- ($(control.west) + (0, 2mm)$);
+     \draw [connector] (b2) -- ($(control.west) + (0, -2mm)$);
+     \draw [connector] (control) -- node {$\jctrl$} (noise);
+     \draw [line]      (noise) -- node {$\tilde{\jctrl}$} (b3);
+     \draw [connector] (b3) -- (model);
+     \draw [connector] (b3) |- (kalman);
+     \draw [line]      (model) -- node {$\jstate_{t+1}$} (b4);
+%     \draw [connector] (b4) -- ++(2.5cm,0) -- ++(0,3cm) -- ++(-2.5cm,0) -- node {$\jstate_t$} (model.north);
+     \draw [connector] (b4) -- (delta);
+     \draw [connector] (delta) -| (kalman);
+     \draw [line]      (kalman) -| node[pos=0.20] {$\tilde{\jstate}$} (b2);
+
+\end{tikzpicture}

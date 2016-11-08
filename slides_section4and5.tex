@@ -1,0 +1,146 @@
+\section{Protocole expérimental et résultats}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\begin{frame}{Le simulateur}
+%    \begin{figure}
+%        \centering
+%        \input{tikz/tikz_env.tex}
+%    \end{figure}
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{}
+
+\begin{frame}{Les expériences}
+    \begin{block}{Motivations}
+        Est-ce que le découpage du problème initial permet de conserver les propriétés intéressantes de QOPS~:
+        \begin{itemize}
+            \item efficacité~: trouver le \og{}meilleur\fg{} mouvement~?
+            \item réalisme~: vérifier les mêmes principes clés
+            \begin{itemize}
+                \item la {\em minimisation de la variance au point final} $[$Harris et Wolpert 98$]$
+                \item le {\em principe d'intervention minimum} $[$Todorov et Jordan 02$]$
+%                \item relation durée du mouvement/amplitude
+%                \item anisotropie
+%                \item loi de Fitts
+%                \item profil de variabilité
+            \end{itemize}
+        \end{itemize}
+    \end{block}
+    Tout en réduisant le temps de calcul~?
+\end{frame}
+
+\begin{frame}{Le système mécanique utilisé}
+    Modèle tiré de $[$Li 2008$]$ et $[$Rigoux et Guigon 11$]$
+    \begin{figure}
+        \centering
+        \subfigure{\includegraphics[width=.47\linewidth]{fig/arm2_fr}}~~~
+        \subfigure{\includegraphics[width=.47\linewidth]{fig/muscles_fr}}
+    \end{figure}
+    Modèle mécanique simple (motivations techniques)
+\end{frame}
+
+\begin{frame}{Performances du contrôleur}
+    \begin{itemize}
+        \item Comparer QOPS $[$Rigoux et Guigon 11$]$ et $\qopslqp$
+        \begin{itemize}
+            \item Coût des solutions~: $\costfuntionhat\left(\jctrl_{\{0..t_f\}}\right) = \sum \jctrl_t^2$
+            \item Vitesse d'exécution
+        \end{itemize}
+    \end{itemize}
+    \begin{columns}
+        \begin{column}{0.60\textwidth}
+            \begin{center}
+                \includegraphics[width=.95\linewidth]{fig/cost_2}
+            \end{center}
+        \end{column}
+        \begin{column}{0.40\textwidth}
+            \begin{block}{Résultats}
+                \begin{itemize}
+                    \item Coût~: +40\%
+                    \item Temps de calcul divisé par 3
+                \end{itemize}
+            \end{block}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+%\begin{frame}{Relation amplitude/durée du mouvement}
+%    \begin{itemize}
+%        \item Propriété observée par $[$Gordon et al. 94$]$
+%        \item Relation linéaire entre la durée du mouvement et son amplitude
+%    \end{itemize}
+%    \begin{figure}
+%        \centering
+%        \subfigure{\includegraphics[width=.40\linewidth]{fig/lqp_scaling_paths_2}}~~~
+%        \subfigure{\includegraphics[width=.40\linewidth]{fig/lqp_scaling}}
+%    \end{figure}
+%    \begin{block}{Résultats}
+%        $\qopslqp$ reproduit cette propriété
+%    \end{block}
+%\end{frame}
+%
+%\begin{frame}{Anisotropie}
+%    \begin{itemize}
+%        \item Propriété observée par $[$Gordon et al. 94$]$
+%        \item Relation entre la durée du mouvement et sa direction
+%    \end{itemize}
+%    \begin{figure}
+%        \centering
+%        \subfigure{\includegraphics[width=.40\linewidth]{fig/lqp_anisotropie_paths_2}}~~~
+%        \subfigure{\includegraphics[width=.40\linewidth]{fig/lqp_anisotropy_2}}
+%    \end{figure}
+%    \begin{block}{Résultats}
+%        $\qopslqp$ reproduit cette propriété
+%    \end{block}
+%\end{frame}
+
+\begin{frame}{Loi de Fitts}
+    \begin{small}
+        \begin{itemize}
+            \item Propriété observée par $[$Fitts 54$]$
+            \item Relation entre la durée du mouvement et son indice de difficulté
+        \end{itemize}
+    \end{small}
+    \begin{center}
+        \includegraphics[width=.55\linewidth]{fig/fitts_exp2}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Loi de Fitts}
+    \begin{figure}
+        \centering
+        \subfigure{\includegraphics[width=.40\linewidth]{fig/lqp_fitts_paths_light2}}~~~
+        \subfigure{\includegraphics[width=.40\linewidth]{fig/lqp_fitts2_sigma4_2}}
+    \end{figure}
+    \begin{block}{Résultats}
+        $\qopslqp$ reproduit cette propriété
+    \end{block}
+\end{frame}
+
+\begin{frame}{Profil de variabilité}
+    \begin{small}
+        \begin{itemize}
+            \item Propriété observée par $[$Selen et al. 06$]$
+            \item Variabilité maximale en milieu de mouvement, minimale à la fin
+        \end{itemize}
+    \end{small}
+    \begin{center}
+        \includegraphics[width=.70\linewidth]{fig/lqp_variations_paths4}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Profil de variabilité}
+    \begin{figure}
+        \centering
+        \subfigure[$\qopslqp$]{\includegraphics[width=.40\linewidth]{fig/variabilite}}~~~
+        \subfigure[Selen et al. 06]{\includegraphics[width=.40\linewidth]{fig/selen06}}
+    \end{figure}
+    \begin{block}{Résultats}
+        $\qopslqp$ reproduit cette propriété
+    \end{block}
+\end{frame}
+

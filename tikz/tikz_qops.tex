@@ -1,0 +1,19 @@
+\begin{tikzpicture}[scale=1, auto, >=stealth']
+    \small
+
+    \tikzstyle{blk} = [rectangle, rounded corners, draw=black, very thick, text width=8cm, minimum height=2cm, text centered]
+    \tikzstyle{lab} = [rectangle]
+    \tikzstyle{line} = [thick]
+    \tikzstyle{connector} = [->,thick]
+
+    %\node [blk] (qopsbox) {$$\jctrl^* = \arg\min_{\discountfactor,t_f} -\rewardfactor~e^{\frac{-t_f.\Delta_t}{\discountfactor}}  + \costfactor~\sum^{t_f}_{t=0} e^{\frac{-t.\Delta_t}{\discountfactor}} \jctrl^2~\Delta_t$$};
+    \node [blk] (qopsbox) {$$\jctrl^* = \arg\min_{\jctrl,t_f} \underbrace{\costfactor~\sum^{t_f}_{t=0} \discountfunction(t_f) \jctrl^2~\Delta_t}_\text{coût énergétique} - \underbrace{\rewardfactor~\discountfunction(t_f)}_\text{récompense}$$};
+    \node [lab, below of=qopsbox, node distance=1.5cm] (lableqops) {QOPS};
+
+    % Now link the nodes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [line]      ($(qopsbox.west) + (0mm,  5mm)$) -- ($(qopsbox.west) + (-5mm,  5mm)$) node[left] {$\jstate$};
+    \draw [line]      ($(qopsbox.west) + (0mm, -5mm)$) -- ($(qopsbox.west) + (-5mm, -5mm)$) node[left] {$\jstate^*$};
+    \draw [connector] ($(qopsbox.east) + (0mm,  0mm)$) -- ($(qopsbox.east) + ( 5mm,  0mm)$) node[right] {$\jctrl^*$};
+
+\end{tikzpicture}
+

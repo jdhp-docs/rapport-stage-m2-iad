@@ -1,0 +1,18 @@
+\begin{tikzpicture}[scale=1, auto, >=stealth']
+    \small
+
+    \tikzstyle{blk} = [rectangle, rounded corners, draw=black, very thick, text width=8cm, minimum height=2cm, text centered]
+    \tikzstyle{lab} = [rectangle]
+    \tikzstyle{line} = [thick]
+    \tikzstyle{connector} = [->,thick]
+
+    \node [blk] (qopsbox) {Planifie les activations musculaires $\jctrl$ pour tout le mouvement};
+    \node [lab, below of=qopsbox, node distance=1.5cm] (lableqops) {QOPS};
+
+    % Now link the nodes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [line]      ($(qopsbox.west) + (0mm,  5mm)$) -- ($(qopsbox.west) + (-5mm,  5mm)$) node[left] {$\jstate$};
+    \draw [line]      ($(qopsbox.west) + (0mm, -5mm)$) -- ($(qopsbox.west) + (-5mm, -5mm)$) node[left] {$\jstate^*$};
+    \draw [connector] ($(qopsbox.east) + (0mm,  0mm)$) -- ($(qopsbox.east) + ( 5mm,  0mm)$) node[right] {$\jctrl^*$};
+
+\end{tikzpicture}
+

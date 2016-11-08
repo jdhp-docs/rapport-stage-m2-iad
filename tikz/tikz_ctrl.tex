@@ -1,0 +1,28 @@
+\begin{tikzpicture}[scale=1, auto, >=stealth']
+    \small
+
+    \tikzstyle{blk} = [rectangle, rounded corners, draw=black, very thick, text width=3cm, minimum height=2cm, text centered]
+    \tikzstyle{lab} = [rectangle]
+
+    % Node placement with matrix library (1x3 array) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \matrix[ampersand replacement=\&, row sep=0.3cm, column sep=1cm] {
+      % row 2
+      \node[blk, text width=1cm] (boxB0) {$\fk$}; \&
+      \node[blk] (boxB1) {Optimisation de la dynamique dans l'espace de la tâche (QOPS)}; \&
+      \node[blk] (boxB2) {Optimisation des activations dans l'espace articulaire (LQP)}; 
+      \\
+    };
+
+     \node [lab, below of=boxB1, node distance=1.5cm] (lA) {(a)};
+     \node [lab, below of=boxB2, node distance=1.5cm] (lB) {(b)};
+
+     % Now link the nodes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+     \draw [line]      ($(boxB0.west) + (0mm,  5mm)$) -- ($(boxB0.west) + (-5mm,  5mm)$) node[left] {$\jstate$};
+     \draw [line]      ($(boxB0.west) + (0mm, -5mm)$) -- ($(boxB0.west) + (-5mm, -5mm)$) node[left] {$\jstate^*$};
+     \draw [line]      ($(boxB0.east) + (0mm,  5mm)$) -- ($(boxB1.west) + ( 0mm,  5mm)$) node[midway] {$\ostate$};
+     \draw [line]      ($(boxB0.east) + (0mm, -5mm)$) -- ($(boxB1.west) + ( 0mm, -5mm)$) node[midway] {$\ostate^*$};
+     \draw [connector] (boxB1) -- (boxB2) node[midway] {$\octrl^*$};
+     \draw [connector] ($(boxB2.east) + (0mm,  0mm)$) -- ($(boxB2.east) + ( 5mm,  0mm)$) node[right] {$\jctrl^*$};
+
+\end{tikzpicture}
+

@@ -1,0 +1,30 @@
+\begin{tikzpicture}[scale=1, auto, >=stealth']
+    \small
+
+    \tikzstyle{blk} = [rectangle, rounded corners, draw=black, very thick, text width=3.5cm, minimum height=2cm, text centered]
+    \tikzstyle{lab} = [rectangle]
+    \tikzstyle{connector} = [->,thick]
+    \tikzstyle{line} = [thick]
+
+    % Node placement with matrix library (3x2 array) %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \matrix[ampersand replacement=\&, row sep=0.3cm, column sep=1cm] {
+        % row 1
+        %\node[blk] (boxB1) {Optimisation de la dynamique dans l'espace de la tâche}; \&
+        %\node[blk] (boxB2) {Optimisation des activations dans l'espace articulaire}; 
+        \node[blk, fill=gray!20] (boxB1) {Planifie les forces $\octrl$ pour tout le mouvement}; \&
+        \node[blk] (boxB2) {Exécute la trajectoire planifiée pour le pas de temps suivant}; 
+        \\
+    };
+
+    \node [lab, below of=boxB1, node distance=1.5cm] (lableqops) {$\qopsx$};
+    \node [lab, below of=boxB2, node distance=1.5cm] (lableqops) {LQP};
+
+    % Now link the nodes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [connector] (boxB1) -- (boxB2) node[midway] {$\octrl^*$};
+
+    \draw [line]      ($(boxB1.west) + (0mm,  5mm)$) -- ($(boxB1.west) + (-5mm,  5mm)$) node[left] {$\ostate$};
+    \draw [line]      ($(boxB1.west) + (0mm, -5mm)$) -- ($(boxB1.west) + (-5mm, -5mm)$) node[left] {$\ostate^*$};
+    \draw [connector] ($(boxB2.east) + (0mm,  0mm)$) -- ($(boxB2.east) + ( 5mm,  0mm)$) node[right] {$\jctrl^*$};
+
+\end{tikzpicture}
+

@@ -1,0 +1,19 @@
+\appendix
+
+\section{Annexes}
+
+\begin{frame}{Dynamique du bras dans l'espace de la tâche}
+    \begin{small}
+        \begin{align}
+            \x   & = \fk(\q) \\
+            \dx  & = \jacobian(\q)\dq \\
+            \vt  & = \ms{M}(\q) ~ \ddq + \vs{n}(\q, \dq) \\
+            \ddq & = \ms{M}^{-1}(\q) ~ \vt - \ms{M}^{-1}( \q ) ~ \vs{n}( \q, \dq ) \\
+            \ddx & = \jacobian(\q) \ddq + \djacobian(\q, \dq) \dq \\
+            \ddx & = \jacobian(\q) ~ \ms{M}^{-1}(\q) ~ \vt - \jacobian(\q) ~ \ms{M}^{-1}(\q) ~ \vs{n}( \q, \dq ) + \djacobian(\q, \dq) ~ \dq \\
+            \vt  & = \jacobian^T(\q) ~ \octrl \\
+            \ddx & = \jacobian(\q) ~ \ms{M}^{-1}(\q) ~ \jacobian^T(\q) ~ \octrl - \jacobian(\q) ~ \ms{M}^{-1}(\q) ~ \vs{n}( \q, \dq ) + \djacobian(\q, \dq) ~ \dq
+        \end{align}
+    \end{small}
+\end{frame}
+

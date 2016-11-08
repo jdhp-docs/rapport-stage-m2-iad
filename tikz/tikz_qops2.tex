@@ -1,0 +1,17 @@
+\begin{tikzpicture}[scale=1, auto, >=stealth']
+    \small
+
+    \tikzstyle{blk} = [rectangle, rounded corners, draw=black, very thick, text width=3.5cm, minimum height=2cm, text centered]
+    \tikzstyle{lab} = [rectangle]
+    \tikzstyle{connector} = [->,thick]
+    \tikzstyle{line} = [thick]
+
+    \node[blk] (boxB1) {Optimisation de la dynamique dans l'espace de la tâche}; \&
+    \node [lab, below of=boxB1, node distance=1.5cm] (lableqops) {$\qopsx$};
+
+    % Now link the nodes %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \draw [line]      ($(boxB1.west) + (0mm,  5mm)$) -- ($(boxB1.west) + (-5mm,  5mm)$) node[left] {\dontforget{$\ostate$}};
+    \draw [line]      ($(boxB1.west) + (0mm, -5mm)$) -- ($(boxB1.west) + (-5mm, -5mm)$) node[left] {\dontforget{$\ostate^*$}};
+    \draw [connector] ($(boxB1.east) + (0mm,  0mm)$) -- ($(boxB1.east) + ( 5mm,  0mm)$) node[right] {\dontforget{$\octrl^*$}};
+
+\end{tikzpicture}
